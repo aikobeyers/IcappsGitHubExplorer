@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start-app": "ng s",
-    "start": "ng build --aot --prod",
+    "start": "node server.js",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
