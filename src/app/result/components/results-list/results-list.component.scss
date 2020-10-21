@@ -20,6 +20,17 @@
     .pagination{
       width: 95%;
       padding: 10px;
+
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .pagination-button-wrapper{
+        .pagination-button:hover{
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
     }
   }
 }

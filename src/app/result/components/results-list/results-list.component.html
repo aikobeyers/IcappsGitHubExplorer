@@ -6,7 +6,15 @@
   <div *ngIf="!loading" class="results-list">
       <ghe-results-list-row *ngFor="let result of results" [result]="result"></ghe-results-list-row>
     <div class="pagination">
-      {{page}}
+      <div class="pagination-button-wrapper">
+        <div *ngIf="pageNumber > 1" class="pagination-button" (click)="clickPrevious()">Previous</div>
+      </div>
+      <div>{{pageNumber}}</div>
+      <div class="pagination-button-wrapper">
+        <div *ngIf="!atLastPage" class="pagination-button --next-button" (click)="clickNext()">
+          Next
+        </div>
+      </div>
     </div>
   </div>
 </div>

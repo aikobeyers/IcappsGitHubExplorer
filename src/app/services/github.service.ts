@@ -30,14 +30,15 @@ export class GithubService {
 
   constructor(private http: HttpClient) {  }
 
-  searchRepositories(): Observable<any>{
-    return this.http.get(`${this.url}/search/repositories?q=${this.query.query}`, {observe: 'response'});
+  searchRepositories(pageNumber: number): Observable<any>{
+    return this.http.get(`${this.url}/search/repositories?q=${this.query.query}&page=${pageNumber}`, {observe: 'response'});
   }
 
   getRepositoryById(id: number): Observable<any>{
     return this.http.get(`${this.url}/repositories/${id}`);
   }
 
-
-
+  nextPageResults(url: string): Observable<any>{
+    return this.http.get(url, {observe: 'response'});
+  }
 }

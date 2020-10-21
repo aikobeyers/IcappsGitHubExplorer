@@ -13,28 +13,32 @@ export class ResultsOverviewComponent implements OnInit {
   loading = true;
   results = [];
   inputValue: string;
-  page: number;
+  pageNumber: number;
+  nextPage: string;
+  lastPage: string;
+  atLastPage = false;
 
   constructor(private githubService: GithubService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
-    if (!this.githubService.query){
       this.activatedRoute.queryParams.subscribe(params => {
         this.githubService.query = {query: params.q};
         this.inputValue = params.q;
-        this.page = params.p;
+        this.pageNumber = parseInt(params.p, 10);
         this.getResults();
       });
-    } else {
-      this.getResults();
-    }
   }
 
   getResults(): void {
-    this.githubService.searchRepositories().subscribe((response: any) => {
+    this.githubService.searchRepositories(this.pageNumber).subscribe((response: any) => {
 
+      this.headerLinks = [];
       this.setLinks(response.headers.get('link'));
+      if (!this.lastPage){
+        this.atLastPage = true;
+      }
       this.results = response.body.items;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       this.loading = false;
     });
   }
@@ -46,17 +50,31 @@ export class ResultsOverviewComponent implements OnInit {
         this.headerLinks.push(e.split(';'));
       });
     }
+    if (this.pageNumber === 1){
+      this.nextPage = this.headerLinks[0] && this.headerLinks[0][0].substring(1, this.headerLinks[0][0].length - 1);
+      this.lastPage = this.headerLinks[1] && this.headerLinks[1][0].substring(1, this.headerLinks[1][0].length - 1);
+    } else {
+      this.nextPage = this.headerLinks[1] && this.headerLinks[1][0].substring(1, this.headerLinks[1][0].length - 1);
+      this.lastPage = this.headerLinks[2] && this.headerLinks[2][0].substring(1, this.headerLinks[2][0].length - 1);
+    }
   }
 
-  nextPage(): void{
-    // Nextpage
-    console.log(this.headerLinks[0][0].substring(1, this.headerLinks[0][0].length - 1));
+  goToNextPage(): void{
+    this.loading = true;
+    this.router.navigateByUrl(`results?q=${this.inputValue}&p=${++this.pageNumber}`);
+  }
+
+  goToPreviousPage(): void{
+    this.loading = true;
+    this.atLastPage = false;
+    this.router.navigateByUrl(`results?q=${this.inputValue}&p=${--this.pageNumber}`);
   }
 
   newSearch(queryObject: QueryObject): void{
     this.githubService.query = queryObject;
     this.router.navigateByUrl(`results?q=${queryObject.query}&p=1`);
     this.loading = true;
+    this.results = [];
     this.getResults();
   }
 

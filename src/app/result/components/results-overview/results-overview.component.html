@@ -1,4 +1,13 @@
 <div class="results-overview-container --ghe-container">
   <ghe-search-bar placeholder="What repository are you looking for?" (executeSearch)="newSearch($event)" ></ghe-search-bar>
-  <ghe-results-list [loading]="loading" [results]="results" [page]="page"></ghe-results-list>
+  <ghe-results-list
+    [loading]="loading"
+    [results]="results"
+    [pageNumber]="pageNumber"
+    [lastPage]="lastPage"
+    [nextPage]="nextPage"
+    [atLastPage]="atLastPage"
+    (clickNextEmitter)="goToNextPage()"
+    (clickPreviousEmitter)="goToPreviousPage()"
+  ></ghe-results-list>
 </div>
