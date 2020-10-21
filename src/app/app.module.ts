@@ -9,6 +9,8 @@ import { AboutComponent } from './about/about.component';
 import { FooterComponent } from './footer/footer.component';
 import {CategoriesModule} from './categories/categories.module';
 import {HomeModule} from './home/home.module';
+import {HttpClientModule} from '@angular/common/http';
+import {ResultModule} from './result/result.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,10 @@ import {HomeModule} from './home/home.module';
         AppRoutingModule,
         NavbarModule,
         CategoriesModule,
-        HomeModule
+        HomeModule,
+        ResultModule,
+        HttpClientModule,
+
     ],
   providers: [],
   bootstrap: [AppComponent]

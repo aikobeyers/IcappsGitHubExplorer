@@ -1,0 +1,29 @@
+.results-list-row-container{
+  width: 95%;
+  height: 50px;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+
+  padding: 0 5px 0 5px;
+
+  border-bottom: 0.1rem solid #d1d1d1;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  transition: background-color 0.2s ease-in-out;
+
+  .result-name, .result-stars{
+    margin: 0;
+  }
+}
+
+
+.results-list-row-container:hover{
+  cursor: pointer;
+  background-color: #ffffff2e;
+}

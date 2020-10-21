@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import {QueryObject} from '../../model/queryObject';
 
 @Component({
   selector: 'ghe-search-bar',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
+  @Input()
+  placeholder = '';
+
+  @Output()
+  executeSearch = new EventEmitter<QueryObject>();
+
+  searchQuery = {query: ''};
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  doSearch(): void{
+    this.executeSearch.emit(this.searchQuery);
   }
 
 }

@@ -1,0 +1,10 @@
+<div class="results-list-container">
+  <div *ngIf="loading" class="spinner-container" >
+    <ngx-spinner type="ball-clip-rotate-multiple" size="medium">
+    </ngx-spinner>
+  </div>
+  <div *ngIf="!loading" class="results-list">
+    <ghe-results-list-row *ngFor="let result of results" [result]="result"></ghe-results-list-row>
+    PAGINATION
+  </div>
+</div>
