@@ -9,7 +9,7 @@ export class NavbarComponent implements OnInit {
 
   navbarItems = [
     { label: 'Home', link: '/'},
-    { label: 'Categories', link: '/categories'},
+    /*{ label: 'Categories', link: '/categories'},*/
     { label: 'About', link: '/about'}
   ]
 

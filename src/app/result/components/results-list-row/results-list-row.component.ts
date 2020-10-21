@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GithubResult} from '../../model/githubResult';
+import {Router} from '@angular/router';
+import {GithubService} from '../../../services/github.service';
 
 @Component({
   selector: 'ghe-results-list-row',
@@ -11,9 +13,14 @@ export class ResultsListRowComponent implements OnInit {
   @Input()
   result: GithubResult;
 
-  constructor() { }
+  constructor(private router: Router, private githubService: GithubService) { }
 
   ngOnInit(): void {
+  }
+
+  navigateToDetail(): void{
+    this.githubService.resultDetail = this.result;
+    this.router.navigateByUrl(`results/${this.result.id}`);
   }
 
 }

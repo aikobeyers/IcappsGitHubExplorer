@@ -1,4 +1,4 @@
 <div class="search-bar-container">
-  <input type="text" class="search-input" [placeholder]="placeholder" [(ngModel)]="searchQuery.query">
-  <button class="search-button" (click)="doSearch()">Search</button>
+  <input type="text" class="search-input" [placeholder]="placeholder" [(ngModel)]="searchQuery.query" (keydown.enter)="doSearch()">
+  <button class="ghe-button search-button" (click)="doSearch()">Search</button>
 </div>

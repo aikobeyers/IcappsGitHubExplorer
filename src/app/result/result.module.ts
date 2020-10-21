@@ -6,17 +6,20 @@ import { ResultsListComponent } from './components/results-list/results-list.com
 import {NgxSpinnerModule} from 'ngx-spinner';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ResultsListRowComponent } from './components/results-list-row/results-list-row.component';
+import { ResultsDetailComponent } from './components/results-detail/results-detail.component';
+import {RouterModule} from '@angular/router';
 
 
 
 
 @NgModule({
-  declarations: [ResultsOverviewComponent, ResultsListComponent, ResultsListRowComponent],
+  declarations: [ResultsOverviewComponent, ResultsListComponent, ResultsListRowComponent, ResultsDetailComponent],
   imports: [
     CommonModule,
     GheCommonModule,
     NgxSpinnerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RouterModule
   ]
 })
 export class ResultModule { }

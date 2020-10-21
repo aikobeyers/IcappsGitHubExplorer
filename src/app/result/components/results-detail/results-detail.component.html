@@ -1,0 +1,23 @@
+<div class="--ghe-container results-detail-container">
+  <button *ngIf="showBackButton" class="ghe-button back-button" (click)="goBack()">Back</button>
+  <div class="detail-window">
+    <div class="repo-owner">
+      <div class="image-wrapper">
+        <img class="owner-image" [src]="gitHubItem?.owner?.avatar_url" alt="Owner has no avatar."/>
+      </div>
+      <div class="owner-name">
+        <h2>{{gitHubItem?.owner?.login}}</h2>
+      </div>
+    </div>
+    <div class="extra-details">
+      <h2>{{gitHubItem?.name}}</h2>
+      <h5>Stars: ★ {{gitHubItem?.stargazers_count}}</h5>
+      <h5>Forks: ⑂ {{gitHubItem?.forks_count}}</h5>
+    </div>
+    <div class="description">
+      <b><h4>Description</h4></b>
+      <span>{{gitHubItem?.description}}</span>
+      <span>url: <a [href]="gitHubItem?.html_url" target="_blank">{{gitHubItem?.html_url}}</a></span>
+    </div>
+  </div>
+</div>

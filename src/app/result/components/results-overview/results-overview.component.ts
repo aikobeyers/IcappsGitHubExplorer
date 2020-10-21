@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {GithubService} from '../../../services/github.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {QueryObject} from '../../../common/model/queryObject';
 import {NgxSpinnerService} from 'ngx-spinner';
 
@@ -13,19 +13,20 @@ export class ResultsOverviewComponent implements OnInit {
   headerLinks = [];
   loading = true;
   results = [];
+  inputValue: string;
 
-  constructor(private githubService: GithubService, private activatedRoute: ActivatedRoute) { }
+  constructor(private githubService: GithubService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     if (!this.githubService.query){
       this.activatedRoute.queryParams.subscribe(params => {
         this.githubService.query = {query: params.q};
+        this.inputValue = params.q;
         this.getResults();
       });
     } else {
       this.getResults();
     }
-
   }
 
   getResults(): void {
@@ -51,8 +52,11 @@ export class ResultsOverviewComponent implements OnInit {
     console.log(this.headerLinks[0][0].substring(1, this.headerLinks[0][0].length - 1));
   }
 
-  newSearch(): void{
-
-  };
+  newSearch(queryObject: QueryObject): void{
+    this.githubService.query = queryObject;
+    this.router.navigateByUrl(`results?q=${queryObject.query}`);
+    this.loading = true;
+    this.getResults();
+  }
 
 }

@@ -12,6 +12,7 @@ export class SearchBarComponent implements OnInit {
   @Input()
   placeholder = '';
 
+
   @Output()
   executeSearch = new EventEmitter<QueryObject>();
 
@@ -20,10 +21,13 @@ export class SearchBarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
   doSearch(): void{
-    this.executeSearch.emit(this.searchQuery);
+    if (this.searchQuery.query !== ''){
+      this.executeSearch.emit(this.searchQuery);
+    }
   }
 
 }

@@ -2,11 +2,19 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {QueryObject} from '../common/model/queryObject';
+import {GithubResult} from '../result/model/githubResult';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GithubService {
+  get resultDetail(): GithubResult {
+    return this._resultDetail;
+  }
+
+  set resultDetail(value: GithubResult) {
+    this._resultDetail = value;
+  }
   get query(): QueryObject {
     return this._query;
   }
@@ -15,14 +23,19 @@ export class GithubService {
     this._query = value;
   }
 
-  private readonly url: string = 'http://api.github.com/search';
+  private _resultDetail: GithubResult;
+
+  private readonly url: string = 'http://api.github.com';
   private _query: QueryObject;
 
   constructor(private http: HttpClient) {  }
 
   searchRepositories(): Observable<any>{
+    return this.http.get(`${this.url}/search/repositories?q=${this.query.query}`, {observe: 'response'});
+  }
 
-    return this.http.get(`${this.url}/repositories?q=${this.query.query}`, {observe: 'response'});
+  getRepositoryById(id: number): Observable<any>{
+    return this.http.get(`${this.url}/repositories/${id}`);
   }
 
 

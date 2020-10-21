@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {GithubResult} from '../../model/githubResult';
 
 @Component({
   selector: 'ghe-results-list',
@@ -13,7 +14,7 @@ export class ResultsListComponent implements OnInit {
   loading: boolean;
 
   @Input()
-  results: [];
+  results: GithubResult[];
 
   constructor(private spinner: NgxSpinnerService) { }
 
