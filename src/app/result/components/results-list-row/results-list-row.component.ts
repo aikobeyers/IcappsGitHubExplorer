@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {GithubResult} from '../../model/githubResult';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {GithubService} from '../../../services/github.service';
 
 @Component({
@@ -13,9 +13,12 @@ export class ResultsListRowComponent implements OnInit {
   @Input()
   result: GithubResult;
 
-  constructor(private router: Router, private githubService: GithubService) { }
+  constructor(private router: Router, private githubService: GithubService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.githubService.pageNumber = params.p;
+    });
   }
 
   navigateToDetail(): void{

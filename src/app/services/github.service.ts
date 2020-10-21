@@ -8,6 +8,13 @@ import {GithubResult} from '../result/model/githubResult';
   providedIn: 'root'
 })
 export class GithubService {
+  get pageNumber(): number {
+    return this._pageNumber;
+  }
+
+  set pageNumber(value: number) {
+    this._pageNumber = value;
+  }
   get resultDetail(): GithubResult {
     return this._resultDetail;
   }
@@ -22,6 +29,8 @@ export class GithubService {
   set query(value: QueryObject) {
     this._query = value;
   }
+
+  private _pageNumber: number;
 
   private _resultDetail: GithubResult;
 

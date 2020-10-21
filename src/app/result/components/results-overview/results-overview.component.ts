@@ -71,6 +71,7 @@ export class ResultsOverviewComponent implements OnInit {
   }
 
   newSearch(queryObject: QueryObject): void{
+    this.atLastPage = false;
     this.githubService.query = queryObject;
     this.router.navigateByUrl(`results?q=${queryObject.query}&p=1`);
     this.loading = true;

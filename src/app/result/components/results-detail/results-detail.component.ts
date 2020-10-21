@@ -36,7 +36,7 @@ export class ResultsDetailComponent implements OnInit {
 
   goBack(): void{
 
-    this.router.navigateByUrl(`/results?q=${this.githubService.query.query}`);
+    this.router.navigateByUrl(`/results?q=${this.githubService.query.query}&p=${this.githubService.pageNumber}`);
   }
 
 }
