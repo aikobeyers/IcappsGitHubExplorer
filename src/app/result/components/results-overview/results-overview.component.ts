@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {GithubService} from '../../../services/github.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {QueryObject} from '../../../common/model/queryObject';
-import {NgxSpinnerService} from 'ngx-spinner';
 
 @Component({
   selector: 'ghe-results-overview',
@@ -14,6 +13,7 @@ export class ResultsOverviewComponent implements OnInit {
   loading = true;
   results = [];
   inputValue: string;
+  page: number;
 
   constructor(private githubService: GithubService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
@@ -22,6 +22,7 @@ export class ResultsOverviewComponent implements OnInit {
       this.activatedRoute.queryParams.subscribe(params => {
         this.githubService.query = {query: params.q};
         this.inputValue = params.q;
+        this.page = params.p;
         this.getResults();
       });
     } else {
@@ -54,7 +55,7 @@ export class ResultsOverviewComponent implements OnInit {
 
   newSearch(queryObject: QueryObject): void{
     this.githubService.query = queryObject;
-    this.router.navigateByUrl(`results?q=${queryObject.query}`);
+    this.router.navigateByUrl(`results?q=${queryObject.query}&p=1`);
     this.loading = true;
     this.getResults();
   }

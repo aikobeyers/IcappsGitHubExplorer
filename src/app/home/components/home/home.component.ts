@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
 
   setQueryAndNavigateToResults(queryObject: QueryObject): void{
     this.githubService.query = queryObject;
-    this.router.navigateByUrl(`results?q=${queryObject.query}`);
+    this.router.navigateByUrl(`results?q=${queryObject.query}&p=1`);
   }
 
 

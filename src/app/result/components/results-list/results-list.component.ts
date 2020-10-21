@@ -16,6 +16,9 @@ export class ResultsListComponent implements OnInit {
   @Input()
   results: GithubResult[];
 
+  @Input()
+  page: number;
+
   constructor(private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
