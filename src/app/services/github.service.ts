@@ -34,7 +34,7 @@ export class GithubService {
 
   private _resultDetail: GithubResult;
 
-  private readonly url: string = 'http://api.github.com';
+  private readonly url: string = 'https://api.github.com';
   private _query: QueryObject;
 
   constructor(private http: HttpClient) {  }
