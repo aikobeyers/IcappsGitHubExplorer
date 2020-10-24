@@ -12,7 +12,6 @@ export class SearchBarComponent implements OnInit {
   @Input()
   placeholder = '';
 
-
   @Output()
   executeSearch = new EventEmitter<QueryObject>();
 

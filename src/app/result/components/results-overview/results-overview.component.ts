@@ -31,7 +31,6 @@ export class ResultsOverviewComponent implements OnInit {
 
   getResults(): void {
     this.githubService.searchRepositories(this.pageNumber).subscribe((response: any) => {
-
       this.headerLinks = [];
       this.setLinks(response.headers.get('link'));
       if (!this.lastPage){
@@ -52,10 +51,10 @@ export class ResultsOverviewComponent implements OnInit {
     }
     if (this.pageNumber === 1){
       this.nextPage = this.headerLinks[0] && this.headerLinks[0][0].substring(1, this.headerLinks[0][0].length - 1);
-      this.lastPage = this.headerLinks[1] && this.headerLinks[1][0].substring(1, this.headerLinks[1][0].length - 1);
+      this.lastPage = this.headerLinks[1] && this.headerLinks[1][0].substring(2, this.headerLinks[1][0].length - 1);
     } else {
-      this.nextPage = this.headerLinks[1] && this.headerLinks[1][0].substring(1, this.headerLinks[1][0].length - 1);
-      this.lastPage = this.headerLinks[2] && this.headerLinks[2][0].substring(1, this.headerLinks[2][0].length - 1);
+      this.nextPage = this.headerLinks[1] && this.headerLinks[1][0].substring(2, this.headerLinks[1][0].length - 1);
+      this.lastPage = this.headerLinks[2] && this.headerLinks[2][0].substring(2, this.headerLinks[2][0].length - 1);
     }
   }
 

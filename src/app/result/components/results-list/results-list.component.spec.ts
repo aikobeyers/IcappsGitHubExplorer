@@ -19,7 +19,15 @@ describe('ResultsListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should emit when clicked next', () => {
+    const clickedNextSpy = spyOn(component.clickNextEmitter, 'emit');
+    component.clickNext();
+    expect(clickedNextSpy).toHaveBeenCalled();
+  });
+
+  it('should emit when clicked previous', () => {
+    const clickedPreviousSpy = spyOn(component.clickPreviousEmitter, 'emit');
+    component.clickPrevious();
+    expect(clickedPreviousSpy).toHaveBeenCalled();
   });
 });

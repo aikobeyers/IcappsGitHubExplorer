@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchBarComponent } from './search-bar.component';
+import {FormsModule} from '@angular/forms';
+import {QueryObject} from '../../model/queryObject';
 
 describe('SearchBarComponent', () => {
   let component: SearchBarComponent;
@@ -8,7 +10,8 @@ describe('SearchBarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchBarComponent ]
+      declarations: [ SearchBarComponent ],
+      imports: [ FormsModule ]
     })
     .compileComponents();
   });
@@ -19,7 +22,17 @@ describe('SearchBarComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should emit when there is a query', () => {
+    const searchQuery: QueryObject = { query: 'test'};
+    component.searchQuery = { query: 'test'};
+    const executeSearchSpy = spyOn(component.executeSearch, 'emit' );
+    component.doSearch();
+    expect(executeSearchSpy).toHaveBeenCalledWith(searchQuery);
+  });
+
+  it('should not emit when there is no query', () => {
+    const doSearchSpy = spyOn(component.executeSearch, 'emit' );
+    component.doSearch();
+    expect(doSearchSpy).not.toHaveBeenCalled();
   });
 });

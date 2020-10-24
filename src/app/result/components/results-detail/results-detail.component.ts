@@ -22,11 +22,11 @@ export class ResultsDetailComponent implements OnInit {
       this.activatedRoute.params.subscribe(params => {
         this.githubService.getRepositoryById(params.id).subscribe(result => {
           this.gitHubItem = result;
+          console.log(result);
         });
       });
     } else {
       this.gitHubItem = this.githubService.resultDetail;
-      console.log(this.gitHubItem);
     }
 
     if (this.githubService.query){
@@ -35,8 +35,6 @@ export class ResultsDetailComponent implements OnInit {
   }
 
   goBack(): void{
-
     this.router.navigateByUrl(`/results?q=${this.githubService.query.query}&p=${this.githubService.pageNumber}`);
   }
-
 }
