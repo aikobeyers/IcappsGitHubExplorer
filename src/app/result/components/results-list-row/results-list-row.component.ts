@@ -13,6 +13,8 @@ export class ResultsListRowComponent implements OnInit {
   @Input()
   result: GithubResult;
 
+  previewDetails = false;
+
   constructor(private router: Router, private githubService: GithubService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -26,4 +28,20 @@ export class ResultsListRowComponent implements OnInit {
     this.router.navigateByUrl(`results/${this.result.id}`);
   }
 
+  showPreDetails(result: GithubResult): void{
+    this.previewDetails = true;
+  }
+
+  hidePreDetails(): void{
+    this.previewDetails = false;
+  }
+
+  clickOutsideModal(event: any): void{
+    event.stopPropagation();
+    this.hidePreDetails()
+  }
+
+  clickInsideModal(event: any): void{
+    event.stopPropagation();
+  }
 }

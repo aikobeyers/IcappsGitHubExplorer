@@ -11,12 +11,15 @@ import {CategoriesModule} from './categories/categories.module';
 import {HomeModule} from './home/home.module';
 import {HttpClientModule} from '@angular/common/http';
 import {ResultModule} from './result/result.module';
+import { ContactComponent } from './contact/contact.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
-    FooterComponent
+    FooterComponent,
+    ContactComponent
   ],
     imports: [
         BrowserModule,
@@ -26,6 +29,8 @@ import {ResultModule} from './result/result.module';
         HomeModule,
         ResultModule,
         HttpClientModule,
+        BrowserAnimationsModule,
+
 
     ],
   providers: [],

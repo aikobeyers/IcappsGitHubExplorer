@@ -3,11 +3,18 @@ import {ActivatedRoute} from '@angular/router';
 import {NgxSpinnerService} from 'ngx-spinner';
 import {GithubResult} from '../../model/githubResult';
 import { EventEmitter } from '@angular/core';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
   selector: 'ghe-results-list',
   templateUrl: './results-list.component.html',
-  styleUrls: ['./results-list.component.scss']
+  styleUrls: ['./results-list.component.scss'],
+  animations: [
+    trigger('fadeTrigger', [
+      state('fadeOut', style({opacity: 0})),
+      state('fadeIn', style({opacity: 1})),
+      transition('fadeOut <=> fadeIn', animate(200))
+    ])]
 })
 export class ResultsListComponent implements OnInit {
 
@@ -51,6 +58,8 @@ export class ResultsListComponent implements OnInit {
   clickPrevious(): void{
     this.clickPreviousEmitter.emit();
   }
+
+
 
 
 

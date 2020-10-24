@@ -1,0 +1,17 @@
+.contact-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .my-picture{
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid white;
+
+    height: fit-content;
+    margin-bottom: 35px;
+    img{
+      height: 100%;
+      max-height: 100%
+    }
+  }
+}

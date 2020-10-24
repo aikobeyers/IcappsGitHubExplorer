@@ -4,7 +4,7 @@
     </ngx-spinner>
   </div>
   <div *ngIf="!loading" class="results-list">
-      <ghe-results-list-row *ngFor="let result of results" [result]="result"></ghe-results-list-row>
+      <ghe-results-list-row *ngFor="let result of results" [result]="result" ></ghe-results-list-row>
     <div class="pagination">
       <div class="pagination-button-wrapper">
         <div *ngIf="pageNumber > 1" class="pagination-button" (click)="clickPrevious()">Previous</div>
