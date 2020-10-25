@@ -42,7 +42,6 @@ export class ResultsOverviewComponent implements OnInit {
     });
   }
 
-
   setLinks(linkHeader: string): void{
     if (linkHeader){
       linkHeader.split(',').forEach((e: string) => {
@@ -77,5 +76,4 @@ export class ResultsOverviewComponent implements OnInit {
     this.results = [];
     this.getResults();
   }
-
 }

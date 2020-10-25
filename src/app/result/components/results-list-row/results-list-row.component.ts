@@ -38,7 +38,7 @@ export class ResultsListRowComponent implements OnInit {
 
   clickOutsideModal(event: any): void{
     event.stopPropagation();
-    this.hidePreDetails()
+    this.hidePreDetails();
   }
 
   clickInsideModal(event: any): void{

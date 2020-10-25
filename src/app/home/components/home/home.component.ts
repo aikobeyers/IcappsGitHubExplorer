@@ -10,7 +10,6 @@ import {Router} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-
   constructor(private githubService: GithubService, private router: Router) { }
 
   ngOnInit(): void {
@@ -20,6 +19,4 @@ export class HomeComponent implements OnInit {
     this.githubService.query = queryObject;
     this.router.navigateByUrl(`results?q=${queryObject.query}&p=1`);
   }
-
-
 }

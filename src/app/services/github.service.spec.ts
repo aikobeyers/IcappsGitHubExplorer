@@ -3,7 +3,6 @@ import {inject, TestBed} from '@angular/core/testing';
 import { GithubService } from './github.service';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {mockResponse} from '../mocks/mock-github.service';
-import {HttpResponse} from '@angular/common/http';
 
 describe('GithubService', () => {
   let service: GithubService;

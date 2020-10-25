@@ -22,7 +22,6 @@ export class ResultsDetailComponent implements OnInit {
       this.activatedRoute.params.subscribe(params => {
         this.githubService.getRepositoryById(params.id).subscribe(result => {
           this.gitHubItem = result;
-          console.log(result);
         });
       });
     } else {

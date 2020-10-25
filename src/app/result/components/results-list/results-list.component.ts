@@ -58,10 +58,4 @@ export class ResultsListComponent implements OnInit {
   clickPrevious(): void{
     this.clickPreviousEmitter.emit();
   }
-
-
-
-
-
-
 }

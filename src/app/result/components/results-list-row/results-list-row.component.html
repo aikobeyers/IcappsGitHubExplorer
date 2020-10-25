@@ -2,6 +2,7 @@
   <h4 class="result-name">{{result.name}}</h4>
   <h4 class="result-stars">★ {{result.stargazers_count}}</h4>
 
+  <!-- TODO replace modal with popup on hover -->
   <div class="details-modal" *ngIf="previewDetails" (click)="clickOutsideModal($event)">
     <div [class]="previewDetails ?  'modal-container show' : 'modal-continer hide'" (click)="clickInsideModal($event)">
       <div class="close-button" (click)="clickOutsideModal($event)">
